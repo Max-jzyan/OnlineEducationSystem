@@ -18,8 +18,8 @@ Class Course:
     - revisors(adder, subtracter,starCalculater)
 
 
-Class LOC(short for list of courses):
-- **Methods** in LOC
+Class likedCourses:
+- **Methods** in likedCourses
     - addCourse
     - removeCourse
     - showCourseInfo
@@ -32,6 +32,15 @@ Class LOC(short for list of courses):
     - idealCreator
     - filterCourses
     - getHighestRating
+    - displayAll
+
+## User Story
+A user may want to add a Course into the likedCourses;
+A user may want to delete a Course from the likedCourses;
+A user may want to view a Course into the likedCourses;
+A user may want to filter some courses from likedCourses;
+A user may want to pick the most xxx course from likedCourse;
+A user may want to rearrange the likedCourse based on some condition;
 
 
 
