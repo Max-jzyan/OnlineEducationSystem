@@ -22,16 +22,15 @@ Class likedCourses:
 - **Methods** in likedCourses
     - addCourse
     - removeCourse
-    - showCourseInfo
+    - getCourse
     - isAds
     - idealTimeRange
     - isAgeLimited
     - idealComments
     - idealStarRating
-    - idealNumberOfWatched
+    - idealNumberOfWatched 
     - idealCreator
-    - filterCourses
-    - getHighestRating
+    - filterCourses(?)
     - displayAll
 
 ## User Story
@@ -39,7 +38,6 @@ A user may want to add a Course into the likedCourses;
 A user may want to delete a Course from the likedCourses;
 A user may want to view a Course into the likedCourses;
 A user may want to filter some courses from likedCourses;
-A user may want to pick the most xxx course from likedCourse;
 A user may want to rearrange the likedCourse based on some condition;
 
 
