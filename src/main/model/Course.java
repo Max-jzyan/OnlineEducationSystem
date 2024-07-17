@@ -3,7 +3,7 @@ package model;
 public class Course {
     private int timeLength;// unit: seconds
     private String content;
-    private double starRating; // Five stars means full mark
+    private int starRating; // Five stars means full mark
     private String creator;
     private int numberOfBeingWatched;
     private int numberOfComments;
@@ -34,11 +34,11 @@ public class Course {
         this.content = content;
     }
 
-    public double getStarRating() {
+    public int getStarRating() {
         return starRating;
     }
 
-    public void setStarRating(double starRating) {
+    public void setStarRating(int starRating) {
         this.starRating = starRating;
     }
 
@@ -96,11 +96,17 @@ public class Course {
         this.timeLength = this.timeLength + addedTime;
     }
 
-    // REQUIRES: timeLength >= reducedTime
     // MODIFIES: this
-    // EFFECTS: time length is reduced based on reducedTime
+    // EFFECTS: if timeLength >= reduced time ,
+    //          then time length is reduced based on reducedTime
+    //          else,time length will be set to 0
+
     public void reduceTime(int reducedTime) {
-        this.timeLength -= reducedTime;
+        if (timeLength >= reducedTime) {
+            this.timeLength -= reducedTime;
+        } else {
+            this.timeLength = 0;
+        }
     }
 
     // MODIFIES: this
