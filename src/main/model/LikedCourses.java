@@ -40,7 +40,7 @@ public class LikedCourses {
     public Course getCourse(String courseName) {
         for(int i = 0;i < listOfCourses.size();i++) {
             Course tempCourse = listOfCourses.get(i);
-            if(tempCourse.getCourseName() == courseName) {
+            if(tempCourse.getCourseName().equals(courseName)) {
                 return tempCourse;
             } 
         }

@@ -22,7 +22,9 @@ public class MyCourse {
     public MyCourse() {
         init();
         initialCoursesList();
-        
+        // test
+        // myList.addCourse(math);
+        // System.out.println(myList.viewLikedCourses().get(0).getCourseName());
         System.out.println("Welcome to my online course system");
         while (isProgramRunning) {
             processOnFunctionList();
@@ -31,6 +33,9 @@ public class MyCourse {
     }
 
     public void processOnFunctionList() {
+        // test
+        // myList.addCourse(math);
+        // System.out.println(myList.viewLikedCourses().get(0).getCourseName());
         functionList();
         String typeIn = scanner.nextLine();
         processFunctionCommands(typeIn);
@@ -75,29 +80,60 @@ public class MyCourse {
     }
     
     public void addCourseIntoList() {
+        // test
+        // myList.addCourse(math);
+        // System.out.println(myList.viewLikedCourses().get(0).getCourseName());
+
         dashLine();
         System.out.println("Here is all our courses,please choose one to add into your liked course list");
         displayAllCoursesInDataBase();
         String courseName = scanner.nextLine();
-        Course course = getCourse(courseName,allCourses);
+        System.out.println("The type in course name is " + courseName);
+        Course course = getCourse(courseName);
+
+        System.out.println(course.getCourseName());
+
         int sizeInitial = myList.viewLikedCourses().size();
+        // System.out.println("Initial Size is " + sizeInitial);
         myList.addCourse(course);
         int sizeAfter = myList.viewLikedCourses().size();
+        // System.out.println("Current Size is " + sizeAfter);
         if (sizeAfter - sizeInitial == 1) {
-            System.out.println("Added Successfully");
+            // for test
+            // System.out.println("One course has been added");
+            System.out.println(courseName + "Added Successfully");
         } else {
             System.out.println("Fail");
         }
         dashLine();
     }
 
-    public Course getCourse(String courseName, List<Course> listOfCourses) {
-        for (int i = 0;i < listOfCourses.size();i++) {
-            Course tempCourse = listOfCourses.get(i);
-            if (tempCourse.getCourseName() == courseName) {
+    // public Course getCourse(String courseName, List<Course> listOfCourses) {
+    //     for (int i = 0;i < listOfCourses.size();i++) {
+    //         Course tempCourse = listOfCourses.get(i);
+    //         if (tempCourse.getCourseName() == courseName) {
+    //             // System.out.println(tempCourse.getCourseName());
+    //             return tempCourse;
+    //         } 
+    //     }
+    //     return null;
+    // }
+
+    public Course getCourse(String courseName) {
+        // System.out.println("The course size of all courses is "+ allCourses.size());
+        // System.out.println("The course name get into getCourse() is" + courseName);
+        for (int i = 0;i < allCourses.size();i++) {
+            Course tempCourse = allCourses.get(i);
+            // System.out.println(tempCourse.getCourseName());
+            // This is the bug,we can only use .equals to compare strings, not ==
+            // System.out.println(tempCourse.getCourseName().equals(courseName));
+
+            if (tempCourse.getCourseName().equals(courseName)) {
+                // System.out.println(tempCourse.getCourseName());
                 return tempCourse;
             } 
         }
+        System.out.println("Null is added");
         return null;
     }
 
@@ -140,8 +176,7 @@ public class MyCourse {
     }
 
     public void filterCourses() {
-        System.out.println("Mention that you will make changes on your liked courses based on the conditions provided");
-        System.out.println("Please choose how would you like to filter your course");
+        tableForFilter();
         String typeIn = scanner.nextLine();
         switch (typeIn) {
             case "1":
@@ -166,6 +201,16 @@ public class MyCourse {
         
     }
 
+    public void tableForFilter() {
+        System.out.println("Mention that you will make changes on your liked courses based on the conditions provided");
+        System.out.println("Please choose how would you like to filter your course");
+        System.out.println("1.filter by time length");
+        System.out.println("2.filter by having advertisement");
+        System.out.println("3.filer by having age limit");
+        System.out.println("4.filter by star rating");
+        System.out.println("5.fiter by creator");
+    }
+
     public void filterByTime() {
         System.out.println("Please enter the minimum time length");
         String min = scanner.nextLine();
@@ -175,21 +220,21 @@ public class MyCourse {
         String max = scanner.nextLine();
         int valMax = Integer.parseInt(max);
 
-        myList.idealTimeRange(valMin, valMax);
+        myList = myList.idealTimeRange(valMin, valMax);
 
     }
 
     public void filterByAds() {
         System.out.println("Do you want Ads or Non-Ads courses? Answer yes or no.");
         String checker = scanner.nextLine();
-        myList.isAds(checker.equalsIgnoreCase("yes"));
+        myList = myList.isAds(checker.equalsIgnoreCase("yes"));
 
     }
 
     public void filterByAgeLimited() {
         System.out.println("Do you want Age Limited or Non Age Limited courses? Answer yes or no.");
         String checker = scanner.nextLine();
-        myList.isAgeLimited(checker.equalsIgnoreCase("yes"));
+        myList = myList.isAgeLimited(checker.equalsIgnoreCase("yes"));
     }
 
     public void filterByStar() {
@@ -201,13 +246,13 @@ public class MyCourse {
         String max = scanner.nextLine();
         int valMax = Integer.parseInt(max);
 
-        myList.idealStarRating(valMin, valMax);
+        myList = myList.idealStarRating(valMin, valMax);
     }
 
     public void filterByCreator() {
         System.out.println("Please enter the name of creator");
         String creatorName = scanner.nextLine();
-        myList.idealCreator(creatorName);
+        myList = myList.idealCreator(creatorName);
     }
 
     public void viewCoursesNameOfYourList() {
@@ -247,6 +292,10 @@ public class MyCourse {
         allCourses.add(physics);
         allCourses.add(chemistry);
         allCourses.add(business);
+
+        // test
+        // myList.addCourse(math);
+        // System.out.println(myList.viewLikedCourses().get(0).getCourseName());
     }
 
     public void mathInitialize() {

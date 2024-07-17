@@ -30,8 +30,11 @@ public class TestLikedCourses {
     @Test
     void testAddCourses() {
         assertEquals(0, worklist.viewLikedCourses().size());
+        math.setCourseName("Math100");
         worklist.addCourse(math);
         assertEquals(1, worklist.viewLikedCourses().size());
+        assertEquals(math, worklist.viewLikedCourses().get(0));
+        assertEquals(math.getCourseName(), worklist.viewLikedCourses().get(0).getCourseName());
         worklist.addCourse(physics);
         assertEquals(2, worklist.viewLikedCourses().size());
     }
