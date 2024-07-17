@@ -90,21 +90,24 @@ public class MyCourse {
         String courseName = scanner.nextLine();
         System.out.println("The type in course name is " + courseName);
         Course course = getCourse(courseName);
-
-        System.out.println(course.getCourseName());
-
-        int sizeInitial = myList.viewLikedCourses().size();
+        if (course != null) {
+            System.out.println(course.getCourseName());
+            int sizeInitial = myList.viewLikedCourses().size();
         // System.out.println("Initial Size is " + sizeInitial);
-        myList.addCourse(course);
-        int sizeAfter = myList.viewLikedCourses().size();
+            myList.addCourse(course);
+            int sizeAfter = myList.viewLikedCourses().size();
         // System.out.println("Current Size is " + sizeAfter);
-        if (sizeAfter - sizeInitial == 1) {
-            // for test
-            // System.out.println("One course has been added");
-            System.out.println(courseName + "Added Successfully");
+            if (sizeAfter - sizeInitial == 1) {
+                // for test
+                // System.out.println("One course has been added");
+                System.out.println(courseName + "Added Successfully");
+            } else {
+                System.out.println("Fail");
+            }
         } else {
-            System.out.println("Fail");
+            System.out.println("Fail to add a course. Please check your type in.");
         }
+        
         dashLine();
     }
 
@@ -148,13 +151,18 @@ public class MyCourse {
         System.out.println("Please type the course name and you will get detail info about that:");
         String courseName = scanner.nextLine();
         Course course = myList.getCourse(courseName);
-        System.out.println("The time length is " + course.getTimeLength() + " min");
-        System.out.println("The content is " + course.getContent());
-        System.out.println("The star Rating of this course is " + course.getStarRating());
-        System.out.println("The creator of this course is " + course.getCreator());
-        System.out.println("Containing Ads? " + printTrueOrFalse(course.isIncludeAds()));
-        System.out.println("Having age limited? " + printTrueOrFalse(course.isAgeLimited()));
-        System.out.println("Just to confirm, the course name is " + course.getCourseName());
+        if (course != null) {
+            System.out.println("The time length is " + course.getTimeLength() + " min");
+            System.out.println("The content is " + course.getContent());
+            System.out.println("The star Rating of this course is " + course.getStarRating());
+            System.out.println("The creator of this course is " + course.getCreator());
+            System.out.println("Containing Ads? " + printTrueOrFalse(course.isIncludeAds()));
+            System.out.println("Having age limited? " + printTrueOrFalse(course.isAgeLimited()));
+            System.out.println("Just to confirm, the course name is " + course.getCourseName());
+        } else {
+            System.out.println("There's no such a course in your liked course list");
+        }
+        
         dashLine();
 
     }

@@ -34,11 +34,11 @@ Class likedCourses:
     - displayAll
 
 ## User Story
-A user may want to add a Course into the likedCourses;
-A user may want to delete a Course from the likedCourses;
-A user may want to view a Course into the likedCourses;
-A user may want to filter some courses from likedCourses;
-A user may want to rearrange the likedCourse based on some condition;
+- A user may want to add a Course into the likedCourses;
+- A user may want to delete a Course from the likedCourses;
+- A user may want to view a Course's detail infomation from his/her likedCourses;
+- A user may want to filter some courses from likedCourses;
+- A user may want to view all the courses name in likedCourses;
 
 
 
