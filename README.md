@@ -39,7 +39,8 @@ Class likedCourses:
 - A user may want to view a Course's detail infomation from his/her likedCourses;
 - A user may want to filter some courses from likedCourses;
 - A user may want to view all the courses name in likedCourses;
-
+- As a user, when I select the quit option from the application menu, I want to be reminded to save my liked courses to file and have the option to do so or not.
+- As a user, when I start the application, I want to be given the option to load my liked courses from file.
 
 
 An example of text with **bold** and *italic* fonts.  
