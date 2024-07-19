@@ -11,6 +11,9 @@ public class Course {
     private boolean ageLimited;
     private String courseName;
 
+// The name of this class is Course, containing 9 different elements above.
+// The course info can be edited by the administrater and provided for users to filter their 
+// favourite courses.
 
     public Course() {
         timeLength = 0;
@@ -90,8 +93,10 @@ public class Course {
     public void setCourseName(String courseName) {
         this.courseName = courseName;
     }
+    
     // MODIFIES: this
     // EFFECTS: time length is added based on addedTime
+
     public void addTime(int addedTime) {
         this.timeLength = this.timeLength + addedTime;
     }

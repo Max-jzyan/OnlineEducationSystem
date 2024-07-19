@@ -13,6 +13,7 @@ public class TestLikedCourses {
     private Course physics;
     private Course french;
     private LikedCourses worklist;
+    
     @BeforeEach
     void runBefore() {
         math = new Course();
