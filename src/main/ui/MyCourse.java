@@ -2,13 +2,18 @@ package ui;
 
 import model.Course;
 import model.LikedCourses;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
 import java.util.ArrayList;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
 public class MyCourse {
     // The following are given courses
+    
     Course math = new Course();
     Course physics = new Course();
     Course chemistry = new Course();
@@ -16,13 +21,16 @@ public class MyCourse {
     List<Course> allCourses = new ArrayList<>();
     
     LikedCourses myList;
+    private static final String JSON_STORE = "./data/myList.json";
     private Scanner scanner;
     private boolean isProgramRunning;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
     // private int currentCourseIndex = 0;
 
     // EFFECTS: initialize Mycourse with a scanner to read in our input, an empty
     //          likedCourses and list of given courses to choose from
-    public MyCourse() {
+    public MyCourse() throws FileNotFoundException {
         init();
         initialCoursesList();
         // test
@@ -33,6 +41,16 @@ public class MyCourse {
             processOnFunctionList();
         }
         
+    }
+
+    // EFFECTS: part of the initialization, creating a LikeCourse and Scanner,
+    //          setting the status of program to be to true
+    public void init() {
+        myList = new LikedCourses();
+        scanner = new Scanner(System.in);
+        isProgramRunning = true;
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
     }
 
     // EFFECTS: show all the function and then let the user to input 
@@ -55,7 +73,9 @@ public class MyCourse {
         System.out.println("3.View the info for a specific Course in your video list");
         System.out.println("4.Filter some courses from your video list");
         System.out.println("5.View all the Course Name of your list of course");
-        System.out.println("6.Quit");
+        System.out.println("6.save all your work to the file");
+        System.out.println("7.load work room from file");
+        System.out.println("8.Quit");
         dashLine();
     }
 
@@ -78,12 +98,41 @@ public class MyCourse {
                 viewCoursesNameOfYourList();
                 break;
             case "6":
+                saveWorkList();
+                break;
+            case "7":
+                loadWorkList();
+                break;
+            case "8":
                 quit();
                 break;
             default:
                 System.out.println("Invalid option inputted. Please try again.");
         }
         dashLine();
+    }
+
+    // EFFECTS: saves the workroom to file
+    private void saveWorkList() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(myList);
+            jsonWriter.close();
+            System.out.println("Saved myList to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads workroom from file
+    private void loadWorkList() {
+        try {
+            myList = jsonReader.read();
+            System.out.println("Loaded myList from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
     }
     
     // MODIFIES: this
@@ -310,13 +359,7 @@ public class MyCourse {
         isProgramRunning = false;
     }
 
-    // EFFECTS: part of the initialization, creating a LikeCourse and Scanner,
-    //          setting the status of program to be to true
-    public void init() {
-        myList = new LikedCourses();
-        scanner = new Scanner(System.in);
-        isProgramRunning = true;
-    }
+    
 
     // EFFECTS: initialize a given course list
     public void initialCoursesList() {
