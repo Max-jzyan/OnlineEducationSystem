@@ -80,6 +80,7 @@ public class MyCourse {
     }
 
     // EFFECTS: switch to the realted method based on the number user choose
+    @SuppressWarnings("methodlength")
     public void processFunctionCommands(String typeIn) {
         switch (typeIn) {
             case "1":

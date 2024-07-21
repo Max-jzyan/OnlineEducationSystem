@@ -11,6 +11,7 @@ import java.util.stream.Stream;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+
 public class JsonReader {
     private String source;
 
@@ -37,6 +38,7 @@ public class JsonReader {
 
         return contentBuilder.toString();
     }
+
     // EFFECTS: parses workroom from JSON object and returns it
     private LikedCourses parseWorkRoom(JSONObject jsonObject) {
         LikedCourses lc = new LikedCourses();

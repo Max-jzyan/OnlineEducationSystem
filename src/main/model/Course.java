@@ -4,7 +4,7 @@ import org.json.JSONObject;
 
 import persistence.Writable;
 
-public class Course implements Writable{
+public class Course implements Writable {
     private int timeLength;// unit: seconds
     private String content;
     private int starRating; // Five stars means full mark

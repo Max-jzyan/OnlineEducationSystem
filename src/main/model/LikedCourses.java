@@ -10,7 +10,7 @@ import persistence.Writable;
 
 // The class name is LikedCourses, containing one field which is list of courses.
 // It stores all the courses users like, and user can add or remove courses or filter the courses.
-public class LikedCourses implements Writable{
+public class LikedCourses implements Writable {
     private List<Course> listOfCourses;
 
     // EFFECTS: construct a LikedCourse with an empty list of Course
