@@ -8,6 +8,11 @@ import org.json.JSONObject;
 
 import model.LikedCourses;
 
+// Citation: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
+/*
+ * This class is used to write in the file "myList.json"
+ */
+
 public class JsonWriter {
     private static final int TAB = 4;
     private PrintWriter writer;

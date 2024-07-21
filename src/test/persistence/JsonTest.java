@@ -5,6 +5,11 @@ import model.Course;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+// Citation: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
+/*
+ * This class is the parent of JsonReaderTest and JsonWriterTest
+ */
+
 public class JsonTest {
     protected void checkCourse(Course course, int timeLength, String content, 
             int starRating, String creator, int numberOfBeingWatched, 

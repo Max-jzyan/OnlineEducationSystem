@@ -11,6 +11,10 @@ import static org.junit.jupiter.api.Assertions.fail;
 import java.io.IOException;
 import java.util.List;
 
+// Citation: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
+/*
+ * This class includes all the test method for JsonReader
+ */
 
 public class JsonReaderTest extends JsonTest {
 

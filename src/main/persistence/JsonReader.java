@@ -12,6 +12,11 @@ import java.util.stream.Stream;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+// Citation: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
+/*
+ * This class is used to read from the file "myList.json"
+ */
+
 public class JsonReader {
     private String source;
 

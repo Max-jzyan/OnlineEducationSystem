@@ -10,6 +10,11 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+// Citation: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
+/*
+ * This class includes all the test method for JsonWriter
+ */
+
 public class JsonWriterTest extends JsonTest {
     @Test
     void testWriterInvalidFile() {

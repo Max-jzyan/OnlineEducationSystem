@@ -11,6 +11,10 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
+/*
+ * This class contains the main user interface, providing several options for user to choose from.
+ */
+
 public class MyCourse {
     // The following are given courses
     
