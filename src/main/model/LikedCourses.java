@@ -3,9 +3,14 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import persistence.Writable;
+
 // The class name is LikedCourses, containing one field which is list of courses.
 // It stores all the courses users like, and user can add or remove courses or filter the courses.
-public class LikedCourses {
+public class LikedCourses implements Writable{
     private List<Course> listOfCourses;
 
     // EFFECTS: construct a LikedCourse with an empty list of Course
@@ -147,6 +152,23 @@ public class LikedCourses {
     }
 
 
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("list of courses", coursesToJson());
+        return json;
+    }
+
+    // EFFECTS: returns things in this workroom as a JSON array
+    private JSONArray coursesToJson() {
+        JSONArray jsonArray = new JSONArray();
+
+        for (Course c : listOfCourses) {
+            jsonArray.put(c.toJson());
+        }
+
+        return jsonArray;
+    }
 
 
 

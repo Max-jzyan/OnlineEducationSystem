@@ -14,6 +14,7 @@ public class MyCourse {
     Course chemistry = new Course();
     Course business = new Course();
     List<Course> allCourses = new ArrayList<>();
+    
     LikedCourses myList;
     private Scanner scanner;
     private boolean isProgramRunning;

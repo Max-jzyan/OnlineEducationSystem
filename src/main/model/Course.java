@@ -1,6 +1,10 @@
 package model;
 
-public class Course {
+import org.json.JSONObject;
+
+import persistence.Writable;
+
+public class Course implements Writable{
     private int timeLength;// unit: seconds
     private String content;
     private int starRating; // Five stars means full mark
@@ -124,5 +128,30 @@ public class Course {
     // EFFECTS: number of comments is added based on a given number
     public void addNumberOfComments(int num) {
         this.numberOfComments += num; 
+    }
+
+
+    @Override
+    public JSONObject toJson() {
+        // private int timeLength;// unit: seconds
+        // private String content;
+        // private int starRating; // Five stars means full mark
+        // private String creator;
+        // private int numberOfBeingWatched;
+        // private int numberOfComments;
+        // private boolean includeAds;
+        // private boolean ageLimited;
+        // private String courseName;
+        JSONObject json = new JSONObject();
+        json.put("time length", timeLength);
+        json.put("content", content);
+        json.put("star rating", starRating);
+        json.put("creator", creator);
+        json.put("number of being watched", numberOfBeingWatched);
+        json.put("number of comments", numberOfComments);
+        json.put("ads", includeAds);
+        json.put("age", ageLimited);
+        json.put("name", courseName);
+        return json;
     }
 }
