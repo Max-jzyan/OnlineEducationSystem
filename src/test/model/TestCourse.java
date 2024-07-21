@@ -6,10 +6,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+/*
+ * This class is to test the methods in Course class
+ */
 
 public class TestCourse {
     private Course math;
     private Course calculus;
+
     @BeforeEach
     void runBefore() {
         math = new Course();
@@ -31,7 +35,7 @@ public class TestCourse {
         assertEquals(90,math.getTimeLength());
         assertEquals(100, calculus.getTimeLength());
         
-        
+ 
     }
 
     
@@ -51,17 +55,16 @@ public class TestCourse {
         math.setStarRating(4);
         calculus.setStarRating(5);
         assertEquals(4,math.getStarRating());
-        assertEquals(5, calculus.getStarRating());
-        
-       
+        assertEquals(5, calculus.getStarRating());     
     }
+
     @Test
     void testGettersAndSettersCreator() {
          // Creator
-         math.setCreator("UHill Secondary School");
-         calculus.setCreator("UBC");
-         assertEquals("UHill Secondary School", math.getCreator());
-         assertEquals("UBC",calculus.getCreator());
+        math.setCreator("UHill Secondary School");
+        calculus.setCreator("UBC");
+        assertEquals("UHill Secondary School", math.getCreator());
+        assertEquals("UBC",calculus.getCreator());
     }
 
     @Test

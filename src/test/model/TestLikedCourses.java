@@ -7,6 +7,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+/*
+ *  This class is used to test the methods in likeCourse class
+ */
 public class TestLikedCourses {
     private Course math;
     private Course calculus;
