@@ -117,6 +117,8 @@ public class MyCourse {
         dashLine();
     }
 
+    // Citation: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
+
     // EFFECTS: saves the workroom to file
     private void saveWorkList() {
         try {
@@ -128,6 +130,8 @@ public class MyCourse {
             System.out.println("Unable to write to file: " + JSON_STORE);
         }
     }
+
+    // Citation: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
 
     // MODIFIES: this
     // EFFECTS: loads workroom from file

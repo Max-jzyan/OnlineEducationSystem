@@ -4,6 +4,10 @@ import org.json.JSONObject;
 
 import persistence.Writable;
 
+// The name of this class is Course, containing 9 different elements above.
+// The course info can be edited by the administrater and provided for users to filter their 
+// favourite courses.
+
 public class Course implements Writable {
     private int timeLength;// unit: seconds
     private String content;
@@ -15,9 +19,7 @@ public class Course implements Writable {
     private boolean ageLimited;
     private String courseName;
 
-// The name of this class is Course, containing 9 different elements above.
-// The course info can be edited by the administrater and provided for users to filter their 
-// favourite courses.
+
 
     public Course() {
         timeLength = 0;
