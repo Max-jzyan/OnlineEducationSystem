@@ -1,11 +1,11 @@
 {"list of courses": [{
     "ads": false,
-    "creator": "Max",
+    "creator": "Ben",
     "number of being watched": 0,
-    "time length": 100,
-    "name": "Math100",
+    "time length": 150,
+    "name": "Chem121",
     "number of comments": 0,
-    "content": "Calculus I",
-    "age": false,
-    "star rating": 4
+    "content": "Inorganic Chemistry",
+    "age": true,
+    "star rating": 3
 }]}
