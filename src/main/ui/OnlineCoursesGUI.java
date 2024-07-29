@@ -16,6 +16,8 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.Popup;
+import javax.swing.PopupFactory;
 
 import model.Course;
 import model.LikedCourses;
@@ -31,7 +33,7 @@ public class OnlineCoursesGUI extends JFrame {
     private JLabel displayLabel; // showing all the changes of the list
     private static JLabel allCoursesName;
     private JTextField inputField;
-    private JList<Course> courseList;
+    private Popup popup;
 
     private LikedCourses myList;
     List<Course> allCourses = new ArrayList<>();
@@ -116,6 +118,42 @@ public class OnlineCoursesGUI extends JFrame {
             }
 		});
 
+        // The button with ability to filter your selected courses
+        JButton filter = new JButton("Filter courses based on your preference");
+        filter.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JPanel subPanel = new JPanel();
+                subPanel.setLayout(new FlowLayout());
+
+                // Create two buttons for the popup
+                JButton button1 = new JButton("Filter by not having ads");
+                JButton button2 = new JButton("Filter by not having age limited");
+                
+                button1.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        myList = myList.isAds(false);
+                        popup.hide();
+                    }
+                });
+
+                button2.addActionListener(new ActionListener() {
+                    public void actionPerformed(ActionEvent e) {
+                        myList = myList.isAgeLimited(false);
+                        popup.hide();
+                    }
+                });
+
+                subPanel.add(button1);
+                subPanel.add(button2);
+
+                PopupFactory popupFactory = new PopupFactory();
+                popup = popupFactory.getPopup(filter, subPanel, 180, 180);
+                popup.show();
+            }
+		});
+
+
+
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         
@@ -124,6 +162,7 @@ public class OnlineCoursesGUI extends JFrame {
         panel.add(viewer);
         panel.add(loader);
         panel.add(saver);
+        panel.add(filter);
         panel.add(inputField);
         panel.add(displayLabel);
         panel.add(allCoursesName);

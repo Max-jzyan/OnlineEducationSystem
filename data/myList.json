@@ -1,11 +1,46 @@
-{"list of courses": [{
-    "ads": false,
-    "creator": "Ben",
-    "number of being watched": 0,
-    "time length": 150,
-    "name": "Chem121",
-    "number of comments": 0,
-    "content": "Inorganic Chemistry",
-    "age": true,
-    "star rating": 3
-}]}
+{"list of courses": [
+    {
+        "ads": false,
+        "creator": "Ben",
+        "number of being watched": 0,
+        "time length": 150,
+        "name": "Chem121",
+        "number of comments": 0,
+        "content": "Inorganic Chemistry",
+        "age": true,
+        "star rating": 3
+    },
+    {
+        "ads": false,
+        "creator": "Max",
+        "number of being watched": 0,
+        "time length": 100,
+        "name": "Math100",
+        "number of comments": 0,
+        "content": "Calculus I",
+        "age": false,
+        "star rating": 4
+    },
+    {
+        "ads": true,
+        "creator": "Jane",
+        "number of being watched": 0,
+        "time length": 60,
+        "name": "Phys131",
+        "number of comments": 0,
+        "content": "Dynamics I",
+        "age": false,
+        "star rating": 5
+    },
+    {
+        "ads": true,
+        "creator": "Bill",
+        "number of being watched": 0,
+        "time length": 210,
+        "name": "Comm157",
+        "number of comments": 0,
+        "content": "Accounting",
+        "age": true,
+        "star rating": 5
+    }
+]}
