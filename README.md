@@ -43,4 +43,13 @@ Class likedCourses:
 - As a user, when I start the application, I want to be given the option to load my liked courses from file.
 
 
-An example of text with **bold** and *italic* fonts.  
+
+# Instructions for Grader
+
+- You can generate the first required action related to the user story "adding multiple Xs to a Y" by typing one of the course name shown in the bottom of the frame, and then clicking add Course button.(i.e. type Math100 into the input field and then click add Course button)
+- You can generate the second required action related to the user story by typing the course name you want to delete in the input field, and then clicking the delete button. Then by clicking the view button, you can find that the course you want to delete has been deleted.
+- You can locate my visual component by...
+- You can save the state of my application by clicking save button.
+- You can reload the state of my application by clicking load button, then you can view all the loaded courses by clicking view all courses.
+
+

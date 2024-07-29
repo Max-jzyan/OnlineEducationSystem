@@ -1,4 +1,4 @@
-package gui;
+package ui;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -71,6 +71,7 @@ public class OnlineCoursesGUI extends JFrame {
                 String courseName = inputField.getText();
                 myList.removeCourse(courseName);
                 inputField.setText("");
+                displayLabel.setText("The following course has been deleted " + courseName);
             }
 		});
 
