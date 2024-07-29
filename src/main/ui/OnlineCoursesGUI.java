@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -34,6 +35,11 @@ public class OnlineCoursesGUI extends JFrame {
     private static JLabel allCoursesName;
     private JTextField inputField;
     private Popup popup;
+    private JLabel imageAsLabel;
+    private ImageIcon calc;
+    private ImageIcon phys;
+    private ImageIcon comm;
+    private ImageIcon chem;
 
     private LikedCourses myList;
     List<Course> allCourses = new ArrayList<>();
@@ -59,13 +65,30 @@ public class OnlineCoursesGUI extends JFrame {
                 Course course = getCourse(courseName);
                 if (course != null && !myList.viewLikedCourses().contains(course)) {
                     myList.addCourse(course);
-                    // System.out.println("course: " + myList.viewLikedCourses().get(0).getCourseName() + "added");
+                    if (imageAsLabel != null) {
+                        remove(imageAsLabel);
+                    }
+                    if (courseName.equals("Math100")) {   
+                        imageAsLabel = new JLabel(calc);
+                    } else if (courseName.equals("Phys131")) { 
+                        imageAsLabel = new JLabel(phys);
+                    } else if (courseName.equals("Chem121")) {
+                        imageAsLabel = new JLabel(chem);
+                    } else if (courseName.equals("Comm157")) {
+                        imageAsLabel = new JLabel(comm);
+                    }
+                    add(imageAsLabel);
+                    validate();
+		            repaint();
+
                 }
                 inputField.setText(""); // Clear the input field
                 displayLabel.setText("The course name your select " + courseName);
             }
+            
 		});
 
+        
         // The button with ability to delete a course from the list
         JButton deleter = new JButton("Delete a course from your list");
         deleter.addActionListener(new ActionListener() {
@@ -192,6 +215,7 @@ public class OnlineCoursesGUI extends JFrame {
         inputField = new JTextField(10);
         displayLabel = new JLabel("Choose the function you want!");
         allCoursesName = new JLabel("All courses name: Math100,Phys131,Comm157,Chem121");
+        loadImages();
     }
 
     // EFFECTS: initialize the math course
@@ -250,7 +274,19 @@ public class OnlineCoursesGUI extends JFrame {
         return null;
     }
 
+    // EFFECT: load image from package
+    private void loadImages() {
+        String sep = System.getProperty("file.separator");
+        calc = new ImageIcon(System.getProperty("user.dir") + sep
+                + "images" + sep + "calculus.jpg");
+        chem = new ImageIcon(System.getProperty("user.dir") + sep
+                + "images" + sep + "chemistry.jpg");
+        comm = new ImageIcon(System.getProperty("user.dir") + sep
+                + "images" + sep + "commerce.jpg");
+        phys = new ImageIcon(System.getProperty("user.dir") + sep
+                + "images" + sep + "physics.jpg");
 
+    }
 
     // EFFECTS: main function of GUI
     public static void main(String[] args) {
