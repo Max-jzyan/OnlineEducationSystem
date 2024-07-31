@@ -21,6 +21,7 @@ public class Course implements Writable {
 
 
 
+    // EFFECTS: initialize the course, with time length, number of watched, comments are set to 0
     public Course() {
         timeLength = 0;
         numberOfBeingWatched = 0;

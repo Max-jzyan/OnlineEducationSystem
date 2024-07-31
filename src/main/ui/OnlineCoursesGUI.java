@@ -92,6 +92,7 @@ public class OnlineCoursesGUI extends JFrame {
         setVisible(true);
     }
 
+    // EFFECTS: the concrete steps to create a filter button, return a filter button
     @SuppressWarnings("methodlength")
     private JButton getFilter() {
         // The button with ability to filter your selected courses
@@ -130,6 +131,7 @@ public class OnlineCoursesGUI extends JFrame {
         return filter;
     }
 
+    //EFFECTS: the concrete steps to create a saver button, return a saver button
     private JButton getSaver() {
         // The button with ability to save your List into Json File
         JButton saver = new JButton("Save liked courses into file");
@@ -148,6 +150,7 @@ public class OnlineCoursesGUI extends JFrame {
         return saver;
     }
 
+    //EFFECTS: the concrete steps to create a loader button, return a loader button
     private JButton getLoader() {
         // The button with ability to load courses from Json File
         JButton loader = new JButton("Load courses from file");
@@ -165,6 +168,7 @@ public class OnlineCoursesGUI extends JFrame {
         return loader;
     }
 
+    // EFFECTS: the concrete steps to create a viewer button, return a viewer button
     private JButton getViewer() {
         // The button with ability to view all the course name in the list
         JButton viewer = new JButton("View all the courses");
@@ -180,6 +184,7 @@ public class OnlineCoursesGUI extends JFrame {
         return viewer;
     }
 
+    // EFFECTS: the concrete steps to create a deleter button, return a deleter button
     private JButton getDeleter() {
         // The button with ability to delete a course from the list
         JButton deleter = new JButton("Delete a course from your list");
@@ -194,6 +199,7 @@ public class OnlineCoursesGUI extends JFrame {
         return deleter;
     }
 
+    // EFFECT: The concrete steps to create the adder button, return an adder button
     @SuppressWarnings("methodlength")
     private JButton getAdder() {
         // The button with ability to add a course into the list
