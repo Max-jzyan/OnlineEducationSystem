@@ -1,6 +1,7 @@
 package ui;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -52,95 +53,47 @@ public class OnlineCoursesGUI extends JFrame {
     private JsonReader jsonReader;
 
     // EFFECT: add the buttons with different functionality and initialize the system
-    @SuppressWarnings("methodlength")
+    // @SuppressWarnings("methodlength")
     public OnlineCoursesGUI() {
         super("Online Course Education System");
         initialization();    
 
-        // The button with ability to add a course into the list
-        JButton adder = new JButton("Add a course to your List");
-        adder.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String courseName = inputField.getText();
-                Course course = getCourse(courseName);
-                if (course != null && !myList.viewLikedCourses().contains(course)) {
-                    myList.addCourse(course);
-                    if (imageAsLabel != null) {
-                        remove(imageAsLabel);
-                    }
-                    if (courseName.equals("Math100")) {   
-                        imageAsLabel = new JLabel(calc);
-                    } else if (courseName.equals("Phys131")) { 
-                        imageAsLabel = new JLabel(phys);
-                    } else if (courseName.equals("Chem121")) {
-                        imageAsLabel = new JLabel(chem);
-                    } else if (courseName.equals("Comm157")) {
-                        imageAsLabel = new JLabel(comm);
-                    }
-                    add(imageAsLabel);
-                    validate();
-		            repaint();
+        JButton adder = getAdder();
 
-                }
-                inputField.setText(""); // Clear the input field
-                displayLabel.setText("The course name your select " + courseName);
-            }
-            
-		});
+        JButton deleter = getDeleter();
 
+        JButton viewer = getViewer();
+
+        JButton loader = getLoader();
+
+        JButton saver = getSaver();
+
+        JButton filter = getFilter();
+
+
+
+        JPanel panel = new JPanel();
+        // panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.setLayout(new FlowLayout());
         
-        // The button with ability to delete a course from the list
-        JButton deleter = new JButton("Delete a course from your list");
-        deleter.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String courseName = inputField.getText();
-                myList.removeCourse(courseName);
-                inputField.setText("");
-                displayLabel.setText("The following course has been deleted " + courseName);
-            }
-		});
+        panel.add(adder);
+        panel.add(deleter);
+        panel.add(viewer);
+        panel.add(loader);
+        panel.add(saver);
+        panel.add(filter);
+        panel.add(inputField,BorderLayout.SOUTH);
+        panel.add(displayLabel);
+        panel.add(allCoursesName);
 
-        // The button with ability to view all the course name in the list
-        JButton viewer = new JButton("View all the courses");
-        viewer.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                StringBuilder listContent = new StringBuilder();
-                for (int i = 0; i < myList.viewLikedCourses().size(); i++) {
-                    listContent.append(myList.viewLikedCourses().get(i).getCourseName()).append(", ");
-                }
-                displayLabel.setText("My Liked Courses: " + listContent.toString());
-            }
-		});
+        panel.setPreferredSize(new Dimension(500,400));
+        add(panel);
+        pack();
+        setVisible(true);
+    }
 
-        // The button with ability to load courses from Json File
-        JButton loader = new JButton("Load courses from file");
-        loader.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    myList = jsonReader.read();
-                    displayLabel.setText("Loaded myList from " + JSON_STORE);
-                    // System.out.println(myList.viewLikedCourses().size() + " courses has been added");
-                } catch (IOException f) {
-                    displayLabel.setText("Unable to read from file: " + JSON_STORE);
-                }
-            }
-		});
-
-        // The button with ability to save your List into Json File
-        JButton saver = new JButton("Save liked courses into file");
-        saver.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    jsonWriter.open();
-                    jsonWriter.write(myList);
-                    jsonWriter.close();
-                    displayLabel.setText("Saved myList to " + JSON_STORE);
-                } catch (FileNotFoundException g) {
-                    displayLabel.setText("Unable to write to file: " + JSON_STORE);
-                }
-            }
-		});
-
+    @SuppressWarnings("methodlength")
+    private JButton getFilter() {
         // The button with ability to filter your selected courses
         JButton filter = new JButton("Filter courses based on your preference");
         filter.addActionListener(new ActionListener() {
@@ -174,25 +127,106 @@ public class OnlineCoursesGUI extends JFrame {
                 popup.show();
             }
 		});
+        return filter;
+    }
 
+    private JButton getSaver() {
+        // The button with ability to save your List into Json File
+        JButton saver = new JButton("Save liked courses into file");
+        saver.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    jsonWriter.open();
+                    jsonWriter.write(myList);
+                    jsonWriter.close();
+                    displayLabel.setText("Saved myList to " + JSON_STORE);
+                } catch (FileNotFoundException g) {
+                    displayLabel.setText("Unable to write to file: " + JSON_STORE);
+                }
+            }
+		});
+        return saver;
+    }
 
+    private JButton getLoader() {
+        // The button with ability to load courses from Json File
+        JButton loader = new JButton("Load courses from file");
+        loader.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    myList = jsonReader.read();
+                    displayLabel.setText("Loaded myList from " + JSON_STORE);
+                    // System.out.println(myList.viewLikedCourses().size() + " courses has been added");
+                } catch (IOException f) {
+                    displayLabel.setText("Unable to read from file: " + JSON_STORE);
+                }
+            }
+		});
+        return loader;
+    }
 
-        JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-        
-        panel.add(adder);
-        panel.add(deleter);
-        panel.add(viewer);
-        panel.add(loader);
-        panel.add(saver);
-        panel.add(filter);
-        panel.add(inputField);
-        panel.add(displayLabel);
-        panel.add(allCoursesName);
+    private JButton getViewer() {
+        // The button with ability to view all the course name in the list
+        JButton viewer = new JButton("View all the courses");
+        viewer.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                StringBuilder listContent = new StringBuilder();
+                for (int i = 0; i < myList.viewLikedCourses().size(); i++) {
+                    listContent.append(myList.viewLikedCourses().get(i).getCourseName()).append(", ");
+                }
+                displayLabel.setText("My Liked Courses: " + listContent.toString());
+            }
+		});
+        return viewer;
+    }
 
-        add(panel);
-        pack();
-        setVisible(true);
+    private JButton getDeleter() {
+        // The button with ability to delete a course from the list
+        JButton deleter = new JButton("Delete a course from your list");
+        deleter.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String courseName = inputField.getText();
+                myList.removeCourse(courseName);
+                inputField.setText("");
+                displayLabel.setText("The following course has been deleted " + courseName);
+            }
+		});
+        return deleter;
+    }
+
+    @SuppressWarnings("methodlength")
+    private JButton getAdder() {
+        // The button with ability to add a course into the list
+        JButton adder = new JButton("Add a course to your List");
+        adder.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String courseName = inputField.getText();
+                Course course = getCourse(courseName);
+                if (course != null && !myList.viewLikedCourses().contains(course)) {
+                    myList.addCourse(course);
+                    if (imageAsLabel != null) {
+                        remove(imageAsLabel);
+                    }
+                    if (courseName.equals("Math100")) {   
+                        imageAsLabel = new JLabel(calc);
+                    } else if (courseName.equals("Phys131")) { 
+                        imageAsLabel = new JLabel(phys);
+                    } else if (courseName.equals("Chem121")) {
+                        imageAsLabel = new JLabel(chem);
+                    } else if (courseName.equals("Comm157")) {
+                        imageAsLabel = new JLabel(comm);
+                    }
+                    add(imageAsLabel);
+                    validate();
+		            repaint();
+
+                }
+                inputField.setText(""); // Clear the input field
+                displayLabel.setText("The course name your select " + courseName);
+            }
+            
+		});
+        return adder;
     }
 
     // EFFECT: initialize all the courses to be selected, initial Json Reader,Writer,input Field,displayLabel
