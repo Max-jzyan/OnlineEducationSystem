@@ -53,7 +53,6 @@ public class OnlineCoursesGUI extends JFrame {
     private JsonReader jsonReader;
 
     // EFFECT: add the buttons with different functionality and initialize the system
-    // @SuppressWarnings("methodlength")
     public OnlineCoursesGUI() {
         super("Online Course Education System");
         initialization();    
@@ -92,6 +91,7 @@ public class OnlineCoursesGUI extends JFrame {
         setVisible(true);
     }
 
+    // MODIFIES: this
     // EFFECTS: the concrete steps to create a filter button, return a filter button
     @SuppressWarnings("methodlength")
     private JButton getFilter() {
@@ -131,6 +131,7 @@ public class OnlineCoursesGUI extends JFrame {
         return filter;
     }
 
+    //MODIFIES: this
     //EFFECTS: the concrete steps to create a saver button, return a saver button
     private JButton getSaver() {
         // The button with ability to save your List into Json File
@@ -150,6 +151,7 @@ public class OnlineCoursesGUI extends JFrame {
         return saver;
     }
 
+    //MODIFIES: this
     //EFFECTS: the concrete steps to create a loader button, return a loader button
     private JButton getLoader() {
         // The button with ability to load courses from Json File
@@ -168,6 +170,7 @@ public class OnlineCoursesGUI extends JFrame {
         return loader;
     }
 
+    //MODIFIES: this
     // EFFECTS: the concrete steps to create a viewer button, return a viewer button
     private JButton getViewer() {
         // The button with ability to view all the course name in the list
@@ -184,6 +187,7 @@ public class OnlineCoursesGUI extends JFrame {
         return viewer;
     }
 
+    //MODIFIES: this
     // EFFECTS: the concrete steps to create a deleter button, return a deleter button
     private JButton getDeleter() {
         // The button with ability to delete a course from the list
@@ -199,6 +203,7 @@ public class OnlineCoursesGUI extends JFrame {
         return deleter;
     }
 
+    // MODIFIES: this
     // EFFECT: The concrete steps to create the adder button, return an adder button
     @SuppressWarnings("methodlength")
     private JButton getAdder() {
