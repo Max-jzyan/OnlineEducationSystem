@@ -24,6 +24,7 @@ public class LikedCourses implements Writable {
 
     public void addCourse(Course course) {
         listOfCourses.add(course);
+        EventLog.getInstance().logEvent(new Event(course.getCourseName() + " added into your liked list."));
     }
 
     // MODIFIES: this
@@ -34,8 +35,10 @@ public class LikedCourses implements Writable {
         for (int i = 0;i < listOfCourses.size();i++) {
             if (listOfCourses.get(i).equals(course)) {
                 listOfCourses.remove(i);
+                EventLog.getInstance().logEvent(new Event(course.getCourseName() + " deleted from your liked list."));
             }
         }
+        
     }
 
     // MODIFIES: this
@@ -44,6 +47,7 @@ public class LikedCourses implements Writable {
     public void removeCourse(String courseName) {
         Course course = getCourse(courseName);
         removeCourse(course);
+        EventLog.getInstance().logEvent(new Event(courseName + " deleted from your liked list."));
     }
 
     // EFFECTS: get a course based on a given course name
@@ -67,6 +71,8 @@ public class LikedCourses implements Writable {
                 adCourses.addCourse(tempCourse);
             }
         }
+        EventLog.getInstance().logEvent(
+            new Event("Your liked courses list has been filtered based on having Ads or not"));
         return adCourses;
     }
     // EFFECTS: filter out all the courses having or not having age limit
@@ -77,9 +83,10 @@ public class LikedCourses implements Writable {
             Course tempCourse = listOfCourses.get(i);
             if (tempCourse.isAgeLimited() == age) {
                 ageCourses.addCourse(tempCourse);
-                System.out.println(tempCourse.getCourseName());
             }
         }
+        EventLog.getInstance().logEvent(
+            new Event("Your liked courses list has been filtered based on age limited"));
         return ageCourses;
     }
 

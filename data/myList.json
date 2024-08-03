@@ -1,1 +1,11 @@
-{"list of courses": []}
+{"list of courses": [{
+    "ads": false,
+    "creator": "Max",
+    "number of being watched": 0,
+    "time length": 100,
+    "name": "Math100",
+    "number of comments": 0,
+    "content": "Calculus I",
+    "age": false,
+    "star rating": 4
+}]}

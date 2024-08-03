@@ -1,14 +1,13 @@
 package ui;
 
-import java.awt.BorderLayout;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.Timer;
+import java.awt.*;
+import java.awt.event.*;
+
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -21,7 +20,10 @@ import javax.swing.JTextField;
 import javax.swing.Popup;
 import javax.swing.PopupFactory;
 
+
 import model.Course;
+import model.EventLog;
+import model.Event;
 import model.LikedCourses;
 import persistence.JsonReader;
 import persistence.JsonWriter;
@@ -30,7 +32,8 @@ import persistence.JsonWriter;
  * The graphical user interface of this project
  */
 
-public class OnlineCoursesGUI extends JFrame {
+public class OnlineCoursesGUI extends JFrame 
+        implements WindowListener {
     private static final String JSON_STORE = "./data/myList.json";
     private JLabel displayLabel; // showing all the changes of the list
     private static JLabel allCoursesName;
@@ -53,6 +56,7 @@ public class OnlineCoursesGUI extends JFrame {
     private JsonReader jsonReader;
 
     // EFFECT: add the buttons with different functionality and initialize the system
+    @SuppressWarnings("methodlength")
     public OnlineCoursesGUI() {
         super("Online Course Education System");
         initialization();    
@@ -86,6 +90,7 @@ public class OnlineCoursesGUI extends JFrame {
         panel.add(allCoursesName);
 
         panel.setPreferredSize(new Dimension(500,400));
+        addWindowListener(this);
         add(panel);
         pack();
         setVisible(true);
@@ -254,7 +259,7 @@ public class OnlineCoursesGUI extends JFrame {
 
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         setTitle("Online Course Education System");
         setSize(100,200);
         inputField = new JTextField(10);
@@ -333,8 +338,62 @@ public class OnlineCoursesGUI extends JFrame {
 
     }
 
+    public void windowClosed(WindowEvent e) {
+        //This will only be seen on standard output.
+        // System.out.println("Window closed");
+        printLogs(EventLog.getInstance());
+        
+    }
+
+    public void windowOpened(WindowEvent e) {
+        
+    }
+    
+    public void windowIconified(WindowEvent e) {
+        
+    }
+    
+    public void windowDeiconified(WindowEvent e) {
+        
+    }
+    
+    public void windowActivated(WindowEvent e) {
+        
+    }
+    
+    public void windowDeactivated(WindowEvent e) {
+        
+    }
+
+    public void windowClosing(WindowEvent e) {
+        ActionListener task = new ActionListener() {
+            boolean alreadyDisposed = false;
+            public void actionPerformed(ActionEvent e) {
+                if (isDisplayable()) {
+                    alreadyDisposed = true;
+                    dispose();
+                }
+            }
+        };
+        Timer timer;
+        timer = new Timer(0, task); //fire every half second
+        timer.setInitialDelay(0);        //first delay 2 seconds
+        timer.setRepeats(false);
+        timer.start();
+    }
+
+    public void printLogs(EventLog el) {
+        for (Event next : el) {
+            System.out.println(next.toString());
+        }
+
+    }
+
+
     // EFFECTS: main function of GUI
     public static void main(String[] args) {
         new OnlineCoursesGUI();
     }
+
+    
 }

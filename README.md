@@ -53,3 +53,29 @@ Class likedCourses:
 - You can reload the state of my application by clicking load button, then you can view all the loaded courses by clicking view all courses.
 
 
+
+# Phase 4: Task 2
+- Sat Aug 03 15:11:59 PDT 2024
+- Math100 added into your liked list.
+- Sat Aug 03 15:12:04 PDT 2024
+- Phys131 added into your liked list.
+- Sat Aug 03 15:12:10 PDT 2024
+- Chem121 added into your liked list.
+- Sat Aug 03 15:12:18 PDT 2024
+- Phys131 deleted from your liked list.
+- Sat Aug 03 15:12:18 PDT 2024
+- Phys131 deleted from your liked list.
+- Sat Aug 03 15:12:33 PDT 2024
+- Comm157 added into your liked list.
+- Sat Aug 03 15:12:39 PDT 2024
+- Phys131 added into your liked list.
+- Sat Aug 03 15:12:45 PDT 2024
+- Math100 added into your liked list.
+- Sat Aug 03 15:12:45 PDT 2024
+- Chem121 added into your liked list.
+- Sat Aug 03 15:12:45 PDT 2024
+- Your liked courses list has been filtered based on having Ads or not
+- Sat Aug 03 15:12:47 PDT 2024
+- Math100 added into your liked list.
+- Sat Aug 03 15:12:47 PDT 2024
+- Your liked courses list has been filtered based on age limited
