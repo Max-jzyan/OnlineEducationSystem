@@ -338,6 +338,7 @@ public class OnlineCoursesGUI extends JFrame
 
     }
 
+    // EFFECTS: print all the logs while the window is closed
     public void windowClosed(WindowEvent e) {
         //This will only be seen on standard output.
         // System.out.println("Window closed");
@@ -345,26 +346,32 @@ public class OnlineCoursesGUI extends JFrame
         
     }
 
+    // EFFECT: implementation requirement, but nothing should be done
     public void windowOpened(WindowEvent e) {
         
     }
     
+    // EFFECT: implementation requirement, but nothing should be done
     public void windowIconified(WindowEvent e) {
         
     }
     
+    // EFFECT: implementation requirement, but nothing should be done
     public void windowDeiconified(WindowEvent e) {
         
     }
     
+    // EFFECT: implementation requirement, but nothing should be done
     public void windowActivated(WindowEvent e) {
         
     }
     
+    // EFFECT: implementation requirement, but nothing should be done
     public void windowDeactivated(WindowEvent e) {
         
     }
 
+    // EFFECT: close the window immediately
     public void windowClosing(WindowEvent e) {
         ActionListener task = new ActionListener() {
             boolean alreadyDisposed = false;
@@ -382,6 +389,7 @@ public class OnlineCoursesGUI extends JFrame
         timer.start();
     }
 
+    // EFFECTS: print all the logs to the console
     public void printLogs(EventLog el) {
         for (Event next : el) {
             System.out.println(next.toString());

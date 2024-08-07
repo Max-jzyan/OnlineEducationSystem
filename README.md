@@ -79,3 +79,7 @@ Class likedCourses:
 - Math100 added into your liked list.
 - Sat Aug 03 15:12:47 PDT 2024
 - Your liked courses list has been filtered based on age limited
+
+# Phase 4: Task 3
+(My UML diagram is in the images package)
+I will do the refactoring for my 'database', since it appears for two times in different kinds of ui, leading to great duplication. I will do this by using singleton  design pattern, which makes the database easy to access and be changed.
